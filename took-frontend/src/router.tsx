@@ -1,8 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import { isAuthenticated } from './utils/tokenUtils';
+import LoginPage from './pages/LoginPage';
 
 // 페이지 컴포넌트 (추후 구현)
-// import LoginPage from './pages/LoginPage';
 // import RegisterTeamPage from './pages/RegisterTeamPage';
 // import PasswordResultPage from './pages/PasswordResultPage';
 // import ForestPage from './pages/ForestPage';
@@ -23,7 +23,7 @@ const AppRouter = () => {
   return (
     <Routes>
       {/* 공개 라우트 */}
-      <Route path="/login" element={<div>로그인 페이지 (개발 중)</div>} />
+      <Route path="/login" element={<LoginPage />} />
       <Route path="/register-team" element={<div>팀 등록 페이지 (개발 중)</div>} />
       <Route path="/team-created" element={<div>비밀번호 발급 결과 페이지 (개발 중)</div>} />
       
