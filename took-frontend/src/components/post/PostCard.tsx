@@ -10,6 +10,7 @@ const PostContent = styled.div`
   font-size: ${({ theme }) => theme.fontSizes.md};
   margin-bottom: 15px;
   word-break: break-word;
+  line-height: 1.5;
   
   /* 3줄 이상 텍스트 생략 */
   display: -webkit-box;

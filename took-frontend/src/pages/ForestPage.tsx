@@ -15,9 +15,22 @@ import {
 import PostCard from '../components/post/PostCard';
 
 // 스타일 컴포넌트
+const PageWrapper = styled.div`
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
 const ForestContainer = styled.div`
   position: relative;
   min-height: 400px;
+  width: 100%;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 0 16px;
+  box-sizing: border-box;
+  flex: 1;
 `;
 
 const EmptyState = styled.div`
@@ -37,8 +50,8 @@ const EmptyIcon = styled.div`
 
 const FloatingButton = styled.button`
   position: fixed;
-  right: 30px;
-  bottom: 30px;
+  right: calc(50% - 350px); /* 중앙 기준 오른쪽 위치 조정 */
+  bottom: 40px;
   width: 60px;
   height: 60px;
   border-radius: 50%;
@@ -52,15 +65,32 @@ const FloatingButton = styled.button`
   cursor: pointer;
   border: none;
   transition: all 0.2s ease;
+  z-index: 100;
   
   &:hover {
     background-color: #1B5E20;
     transform: translateY(-2px);
+    box-shadow: ${({ theme }) => theme.shadows.large};
   }
   
   &:active {
     transform: translateY(0);
   }
+  
+  @media (max-width: 768px) {
+    right: 30px;
+  }
+`;
+
+const HeaderWrapper = styled.div`
+  width: 100%;
+  border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
+`;
+
+const HeaderContent = styled.div`
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 16px;
 `;
 
 // ForestPage 컴포넌트
@@ -103,8 +133,12 @@ const ForestPage: React.FC = () => {
   };
   
   return (
-    <Container>
-      <Header />
+    <PageWrapper>
+      <HeaderWrapper>
+        <HeaderContent>
+          <Header />
+        </HeaderContent>
+      </HeaderWrapper>
       
       <ForestContainer>
         {error && (
@@ -146,7 +180,7 @@ const ForestPage: React.FC = () => {
         
         <FloatingButton onClick={handleWriteClick}>+</FloatingButton>
       </ForestContainer>
-    </Container>
+    </PageWrapper>
   );
 };
 

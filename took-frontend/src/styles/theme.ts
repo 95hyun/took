@@ -3,7 +3,7 @@ const theme = {
     primary: '#2E7D32', // 대나무 색상 (진한 녹색)
     primaryLight: '#81C784', // 밝은 녹색
     secondary: '#8D6E63', // 대나무 마디 색상 (옅은 갈색)
-    background: '#f9f9f9',
+    background: '#f8f7f2', // 따뜻한 배경색과 일치
     white: '#ffffff',
     black: '#333333',
     gray: '#666666',
@@ -15,8 +15,8 @@ const theme = {
   },
   
   fonts: {
-    regular: '"Noto Sans KR", sans-serif',
-    bold: '"Noto Sans KR Bold", sans-serif',
+    regular: '"Pretendard Variable", Pretendard, sans-serif',
+    bold: '"Pretendard Variable", Pretendard, sans-serif',
   },
   
   fontSizes: {

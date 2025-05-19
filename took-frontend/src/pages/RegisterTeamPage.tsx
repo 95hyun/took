@@ -11,13 +11,25 @@ import {
 } from '../components/common';
 
 // 스타일 컴포넌트
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+`;
+
 const RegisterContainer = styled.div`
+  width: 100%;
   max-width: 500px;
-  margin: 100px auto 0;
-  padding: 30px;
-  border-radius: 8px;
+  padding: 40px;
+  border-radius: 12px;
   background-color: white;
   box-shadow: ${({ theme }) => theme.shadows.medium};
+  margin: 0 auto;
 `;
 
 const Header = styled.h1`
@@ -25,6 +37,14 @@ const Header = styled.h1`
   text-align: center;
   margin-bottom: 30px;
   font-size: 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  
+  &::before {
+    content: '🎋';
+  }
 `;
 
 const Form = styled.form`
@@ -99,7 +119,7 @@ const RegisterTeamPage: React.FC = () => {
   };
   
   return (
-    <Container>
+    <PageWrapper>
       <RegisterContainer>
         <Header>팀 등록하기</Header>
         
@@ -157,7 +177,7 @@ const RegisterTeamPage: React.FC = () => {
           </ButtonGroup>
         </Form>
       </RegisterContainer>
-    </Container>
+    </PageWrapper>
   );
 };
 

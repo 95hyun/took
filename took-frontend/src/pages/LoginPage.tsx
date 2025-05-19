@@ -6,20 +6,40 @@ import { useForm } from '../hooks/useForm';
 import { Button, Container, Input, Alert } from '../components/common';
 
 // 스타일 컴포넌트
+const PageWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  width: 100%;
+  padding: 20px;
+  box-sizing: border-box;
+`;
+
 const LoginContainer = styled.div`
+  width: 100%;
   max-width: 400px;
-  margin: 100px auto 0;
-  padding: 30px;
-  border-radius: 8px;
+  padding: 40px;
+  border-radius: 12px;
   background-color: white;
   box-shadow: ${({ theme }) => theme.shadows.medium};
+  margin: 0 auto;
 `;
 
 const Title = styled.h1`
   color: ${({ theme }) => theme.colors.primary};
   text-align: center;
   margin-bottom: 30px;
-  font-size: 2rem;
+  font-size: 2.2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  
+  &::before {
+    content: '🎋';
+  }
 `;
 
 const Form = styled.form`
@@ -90,9 +110,9 @@ const LoginPage: React.FC = () => {
   };
   
   return (
-    <Container>
+    <PageWrapper>
       <LoginContainer>
-        <Title>🎋 Took 대나무숲</Title>
+        <Title>took</Title>
         
         {(loginError || error) && (
           <Alert
@@ -141,7 +161,7 @@ const LoginPage: React.FC = () => {
           </LinkButton>
         </RegisterLink>
       </LoginContainer>
-    </Container>
+    </PageWrapper>
   );
 };
 

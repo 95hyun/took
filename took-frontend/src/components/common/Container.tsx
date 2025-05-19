@@ -11,6 +11,7 @@ interface ContainerProps {
   padding?: string;
   margin?: string;
   center?: boolean;
+  fullHeight?: boolean;
 }
 
 // 컨테이너 스타일
@@ -19,6 +20,7 @@ const ContainerWrapper = styled.div<{
   padding?: string;
   margin?: string;
   $center?: boolean;
+  $fullHeight?: boolean;
 }>`
   width: 100%;
   max-width: ${({ size }) => {
@@ -34,13 +36,16 @@ const ContainerWrapper = styled.div<{
         return '100%';
     }
   }};
-  padding: ${({ padding }) => padding || '0 16px'};
+  padding: ${({ padding }) => padding || '0 24px'};
   margin: ${({ margin, $center }) => 
     $center 
       ? (margin ? `${margin} auto` : '0 auto')
       : (margin || '0')
   };
   box-sizing: border-box;
+  flex: ${({ $fullHeight }) => $fullHeight ? '1' : 'initial'};
+  display: ${({ $fullHeight }) => $fullHeight ? 'flex' : 'block'};
+  flex-direction: ${({ $fullHeight }) => $fullHeight ? 'column' : 'initial'};
 `;
 
 /**
@@ -51,6 +56,7 @@ const ContainerWrapper = styled.div<{
  * @param padding - 내부 여백 (CSS 값)
  * @param margin - 외부 여백 (CSS 값)
  * @param center - 가운데 정렬 여부
+ * @param fullHeight - 높이를 전체 화면으로 설정 여부
  */
 const Container: React.FC<ContainerProps> = ({
   children,
@@ -58,6 +64,7 @@ const Container: React.FC<ContainerProps> = ({
   padding,
   margin,
   center = true,
+  fullHeight = false,
 }) => {
   return (
     <ContainerWrapper
@@ -65,6 +72,7 @@ const Container: React.FC<ContainerProps> = ({
       padding={padding}
       margin={margin}
       $center={center}
+      $fullHeight={fullHeight}
     >
       {children}
     </ContainerWrapper>

@@ -9,7 +9,7 @@ const HeaderContainer = styled.header`
   justify-content: space-between;
   align-items: center;
   padding: 16px 0;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.lightGray};
+  width: 100%;
   margin-bottom: 32px;
 `;
 
@@ -52,7 +52,7 @@ const ProfileButton = styled.button`
   }
 `;
 
-const Dropdown = styled.div<{ isOpen: boolean }>`
+const Dropdown = styled.div<{ $isOpen: boolean }>`
   position: absolute;
   top: 100%;
   right: 0;
@@ -62,7 +62,7 @@ const Dropdown = styled.div<{ isOpen: boolean }>`
   box-shadow: ${({ theme }) => theme.shadows.medium};
   z-index: 10;
   overflow: hidden;
-  display: ${({ isOpen }) => (isOpen ? 'block' : 'none')};
+  display: ${({ $isOpen }) => ($isOpen ? 'block' : 'none')};
   margin-top: 5px;
 `;
 
@@ -130,12 +130,12 @@ const Header: React.FC = () => {
   
   return (
     <HeaderContainer>
-      <Logo to="/forest">🎋 Took 대나무숲</Logo>
+      <Logo to="/forest">🎋</Logo>
       <Nav>
         {teamName && <TeamName>팀 {teamName}</TeamName>}
         <div style={{ position: 'relative' }} id="profile-dropdown">
           <ProfileButton onClick={handleProfileClick}>내 계정</ProfileButton>
-          <Dropdown isOpen={isDropdownOpen}>
+          <Dropdown $isOpen={isDropdownOpen}>
             <DropdownItem onClick={handlePasswordChange}>비밀번호 변경</DropdownItem>
             <LogoutItem onClick={handleLogout}>로그아웃</LogoutItem>
           </Dropdown>
