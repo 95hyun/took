@@ -1,11 +1,11 @@
 import api from './api';
-import {
+import type {
   Comment,
   CommentCreateRequest,
   CommentUpdateRequest,
   CommentListResponse,
 } from '../types/comment';
-import { ReactionRequest, ReactionResponse } from '../types/post';
+import type { ReactionRequest, ReactionResponse } from '../types/post';
 
 /**
  * 댓글 목록 조회 API 호출

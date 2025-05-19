@@ -1,11 +1,12 @@
-import axios, { AxiosInstance, AxiosError } from 'axios';
+import axios from 'axios';
+import type { AxiosError } from 'axios';
 import { getTokenFromStorage, clearTokenFromStorage } from '../utils/tokenUtils';
 
 // API 기본 URL 설정
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080/api';
 
 // Axios 인스턴스 생성
-const api: AxiosInstance = axios.create({
+const api = axios.create({
   baseURL: API_BASE_URL,
   headers: {
     'Content-Type': 'application/json',

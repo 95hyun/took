@@ -16,7 +16,12 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 // 버튼 베이스 스타일
-const ButtonBase = styled.button<ButtonProps>`
+const ButtonBase = styled.button<{
+  $variant?: ButtonVariant;
+  $size?: ButtonSize;
+  $fullWidth?: boolean;
+  $isLoading?: boolean;
+}>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -27,7 +32,7 @@ const ButtonBase = styled.button<ButtonProps>`
   border: none;
   white-space: nowrap;
   
-  ${({ fullWidth }) => fullWidth && css`
+  ${({ $fullWidth }) => $fullWidth && css`
     width: 100%;
   `}
   
@@ -37,8 +42,8 @@ const ButtonBase = styled.button<ButtonProps>`
   }
   
   /* 크기별 스타일 */
-  ${({ size }) => {
-    switch (size) {
+  ${({ $size }) => {
+    switch ($size) {
       case 'small':
         return css`
           padding: 8px 12px;
@@ -58,8 +63,8 @@ const ButtonBase = styled.button<ButtonProps>`
   }}
   
   /* 타입별 스타일 */
-  ${({ theme, variant }) => {
-    switch (variant) {
+  ${({ theme, $variant }) => {
+    switch ($variant) {
       case 'secondary':
         return css`
           background-color: transparent;
@@ -146,9 +151,10 @@ const Button: React.FC<ButtonProps> = ({
 }) => {
   return (
     <ButtonBase
-      variant={variant}
-      size={size}
-      fullWidth={fullWidth}
+      $variant={variant}
+      $size={size}
+      $fullWidth={fullWidth}
+      $isLoading={isLoading}
       disabled={disabled || isLoading}
       {...rest}
     >

@@ -14,7 +14,12 @@ interface ContainerProps {
 }
 
 // 컨테이너 스타일
-const ContainerWrapper = styled.div<ContainerProps>`
+const ContainerWrapper = styled.div<{
+  size?: ContainerSize;
+  padding?: string;
+  margin?: string;
+  $center?: boolean;
+}>`
   width: 100%;
   max-width: ${({ size }) => {
     switch (size) {
@@ -30,8 +35,8 @@ const ContainerWrapper = styled.div<ContainerProps>`
     }
   }};
   padding: ${({ padding }) => padding || '0 16px'};
-  margin: ${({ margin, center }) => 
-    center 
+  margin: ${({ margin, $center }) => 
+    $center 
       ? (margin ? `${margin} auto` : '0 auto')
       : (margin || '0')
   };
@@ -59,7 +64,7 @@ const Container: React.FC<ContainerProps> = ({
       size={size}
       padding={padding}
       margin={margin}
-      center={center}
+      $center={center}
     >
       {children}
     </ContainerWrapper>
